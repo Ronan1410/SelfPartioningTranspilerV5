@@ -1,0 +1,43 @@
+# complex.py
+
+import math
+import random
+
+class Vector:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+
+    def magnitude(self):
+        return math.sqrt(self.x * self.x + self.y * self.y)
+
+def factorial(n):
+    if n <= 1:
+        return 1
+    return n * factorial(n - 1)
+
+def generate_random_vectors(count):
+    vectors = []
+    for _ in range(count):
+        v = Vector(random.randint(1, 10), random.randint(1, 10))
+        vectors.append(v)
+    return vectors
+
+def sum_magnitudes(vectors):
+    mag_sum = 0
+    for v in vectors:
+        mag_sum += v.magnitude()
+    return mag_sum
+
+vectors = generate_random_vectors(5)
+total = sum_magnitudes(vectors)
+
+print("Generated vectors:")
+for v in vectors:
+    print(f"({v.x}, {v.y}) => magnitude {v.magnitude():.3f}")
+
+print("Total magnitude =", total)
+
+print("Factorials of first 6 numbers:")
+for i in range(1, 7):
+    print(i, "=>", factorial(i))
